@@ -1,0 +1,192 @@
+aid: jpx
+url: https://raw.githubusercontent.com/api-evangelist/jpx/refs/heads/main/apis.yml
+name: JPX (Japan Exchange Group)
+kind: company
+description: JPX (Japan Exchange Group) operates the Tokyo Stock Exchange, Osaka
+  Exchange, and Tokyo Commodity Exchange, and sells Japanese market data through
+  its JPX Market Innovation & Research arm. Its developer-facing product is the
+  J-Quants API - a self-serve, subscription REST API (Free/Light/Standard/Premium
+  plans, x-api-key auth, base https://api.jquants.com/v2) delivering historical
+  equities OHLCV/minute/tick bars, indices, derivatives, financial statements,
+  short-selling and margin data, EDINET filings, and TDnet disclosures, plus bulk
+  CSV download, an MCP server, and a CLI - licensed to individual investors only.
+  Institutional real-time data (FLEX Standard and FLEX MBO order-book feeds) and
+  corporate historical data (J-Quants Pro via API/SFTP/Snowflake, J-Quants
+  DataCube) are sales-gated services.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Financial
+- Market Data
+- Stocks
+- Exchange
+- Trading
+- Derivatives
+- Indices
+- Reference Data
+- Japan
+created: '2026-07-21'
+modified: '2026-07-21'
+specificationVersion: '0.19'
+apis:
+- aid: jpx:j-quants-equities-api
+  name: J-Quants Equities API
+  tags:
+  - Stocks
+  - OHLCV
+  - Tick Data
+  - Listed Issues
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://jpx-jquants.com/en/spec/eq-master
+  baseURL: https://api.jquants.com/v2
+  properties:
+  - url: https://jpx-jquants.com/en/spec/eq-master
+    type: Documentation
+  - url: https://jpx-jquants.com/en/spec/eq-bars-daily
+    type: APIReference
+  description: Listed issue master, daily and morning-session OHLCV, minute bars
+    and tick trades (add-on), earnings calendar, and weekly trading by investor
+    type for Tokyo Stock Exchange equities, under /v2/equities/* endpoints.
+- aid: jpx:j-quants-markets-api
+  name: J-Quants Markets API
+  tags:
+  - Short Selling
+  - Margin Trading
+  - Trading Calendar
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://jpx-jquants.com/en/spec/mkt-cal
+  baseURL: https://api.jquants.com/v2
+  properties:
+  - url: https://jpx-jquants.com/en/spec/mkt-cal
+    type: Documentation
+  - url: https://jpx-jquants.com/en/spec/mkt-short-sale
+    type: APIReference
+  description: Market-structure datasets under /v2/markets/* - trading calendar,
+    short sale position reports, short ratio by sector, weekly margin interest,
+    daily margin alerts, and breakdown trading data.
+- aid: jpx:j-quants-indices-api
+  name: J-Quants Indices API
+  tags:
+  - Indices
+  - TOPIX
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://jpx-jquants.com/en/spec/idx-bars-daily
+  baseURL: https://api.jquants.com/v2
+  properties:
+  - url: https://jpx-jquants.com/en/spec/idx-bars-daily
+    type: Documentation
+  - url: https://jpx-jquants.com/en/spec/idx-bars-daily-topix
+    type: APIReference
+  description: Daily OHLC for TOPIX and other JPX indices under /v2/indices/*
+    endpoints, with plan-gated access (TOPIX from Light, full index set from
+    Standard).
+- aid: jpx:j-quants-financials-api
+  name: J-Quants Financials API
+  tags:
+  - Financial Statements
+  - Dividends
+  - Fundamentals
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://jpx-jquants.com/en/spec/fin-summary
+  baseURL: https://api.jquants.com/v2
+  properties:
+  - url: https://jpx-jquants.com/en/spec/fin-summary
+    type: Documentation
+  - url: https://jpx-jquants.com/en/spec/fin-details
+    type: APIReference
+  description: Corporate financial data under /v2/fins/* - summary report figures
+    (EPS, forecasts), detailed BS/PL/CF statements, and cash dividend data
+    sourced from TDnet disclosures.
+- aid: jpx:j-quants-derivatives-api
+  name: J-Quants Derivatives API
+  tags:
+  - Futures
+  - Options
+  - Derivatives
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://jpx-jquants.com/en/spec/drv-bars-daily-fut
+  baseURL: https://api.jquants.com/v2
+  properties:
+  - url: https://jpx-jquants.com/en/spec/drv-bars-daily-fut
+    type: Documentation
+  - url: https://jpx-jquants.com/en/spec/drv-bars-daily-opt
+    type: APIReference
+  description: Daily OHLC for Osaka Exchange futures and options under
+    /v2/derivatives/*, including Nikkei 225 options (Standard plan) and the full
+    futures/options universe (Premium plan).
+- aid: jpx:j-quants-edinet-api
+  name: J-Quants EDINET Data API
+  tags:
+  - EDINET
+  - Shareholders
+  - Filings
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://jpx-jquants.com/en/spec/edinet-major-shareholders
+  baseURL: https://api.jquants.com/v2
+  properties:
+  - url: https://jpx-jquants.com/en/spec/edinet-major-shareholders
+    type: Documentation
+  - url: https://jpx-jquants.com/en/spec/edinet-cross-shareholdings
+    type: APIReference
+  description: Structured data extracted from EDINET regulatory filings under
+    /v2/edinet/* - major shareholders, cross-shareholdings (policy holdings), and
+    large volume holding reports.
+- aid: jpx:j-quants-tdnet-api
+  name: J-Quants TDnet Disclosure API
+  tags:
+  - TDnet
+  - Disclosures
+  - Documents
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://jpx-jquants.com/en/spec/td-list
+  baseURL: https://api.jquants.com/v2
+  properties:
+  - url: https://jpx-jquants.com/en/spec/td-list
+    type: Documentation
+  - url: https://jpx-jquants.com/en/spec/td-files
+    type: APIReference
+  description: Add-on access to TDnet timely-disclosure documents - a disclosure
+    index (/td/list), document file retrieval (/td/files), and bulk CSV download
+    (/td/bulk) covering five years of filings.
+- aid: jpx:j-quants-bulk-download-api
+  name: J-Quants Bulk Download API
+  tags:
+  - Bulk
+  - CSV
+  - Files
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://jpx-jquants.com/en/spec/bulk
+  baseURL: https://api.jquants.com/v2
+  properties:
+  - url: https://jpx-jquants.com/en/spec/bulk
+    type: Documentation
+  - url: https://jpx-jquants.com/en/spec/bulk-list
+    type: APIReference
+  description: File-based delivery alongside the REST endpoints - list available
+    bulk files (/bulk/list) and download gzipped CSV extracts (/bulk/get) for
+    supported datasets.
+common:
+- type: Website
+  url: https://www.jpx.co.jp/english/
+- type: Portal
+  url: https://jpx-jquants.com/en
+- type: Documentation
+  url: https://jpx-jquants.com/en/spec
+- type: GitHubOrganization
+  url: https://github.com/J-Quants
+- type: LinkedIn
+  url: https://www.linkedin.com/company/japan-exchange-group
+- type: Blog
+  url: https://qiita.com/j_quants
+- type: Pricing
+  url: https://jpx-jquants.com/en#pricing
+- type: SignUp
+  url: https://jpx-jquants.com/en/register
+- type: TermsOfService
+  url: https://www.jpx.co.jp/english/term-of-use/index.html
+- type: PrivacyPolicy
+  url: https://www.jpx.co.jp/english/corporate/governance/security/personal-information/index.html
+- type: Support
+  url: https://jpx-jquants.com/en/help
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,113 @@
+aid: jpx
+name: JPX (Japan Exchange Group)
+review:
+  question: Does JPX (Japan Exchange Group) expose a documented public API surface?
+  answer: true
+  date: '2026-07-21'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    JPX has a genuine self-serve developer surface in the J-Quants API,
+    operated by JPX Market Innovation & Research. The portal
+    (https://jpx-jquants.com/en) publishes a full V2 API reference at
+    /en/spec, an llms.txt, an MCP server (J-Quants/j-quants-doc-mcp), and a
+    CLI (J-Quants/jquants-cli). The V2 base URL is
+    https://api.jquants.com/v2/ with API-key authentication via an
+    x-api-key header obtained from the dashboard after subscription
+    (Free/Light/Standard/Premium plans; rate limits 5/60/120/500 req/min
+    respectively). V1 token-based auth was abolished; V1 was discontinued
+    2026-06-01. Licensing is notable: the service is for individual
+    investors only - commercial, academic, and institutional-quant use is
+    prohibited under the JPX terms. The API is historical/end-of-day (plus
+    minute-bar and tick add-ons), not real-time. Real-time institutional
+    data (FLEX Standard and FLEX MBO full order-book feeds) is a separate
+    sales-gated paid information service on jpx.co.jp with fees and an
+    application process. Corporate data buyers are pointed at J-Quants Pro
+    (API, CSV over SFTP, Snowflake) and J-Quants DataCube, both
+    contract-based. No public OpenAPI/Swagger document was found: the
+    portal's /openapi.json path 307-redirects to /ja/openapi.json which
+    returns HTTP 404, and no spec files exist in the J-Quants GitHub org,
+    so nothing was harvested into openapi/.
+  posture:
+    developerPortal: https://jpx-jquants.com/en
+    selfServe: true
+    freeTier: true
+    authentication: API key (x-api-key header, issued from dashboard after signup)
+    licensingRestriction: Individual investors only; commercial/academic/institutional use prohibited
+    openapiPublished: false
+    realtimeData: Sales-gated (FLEX Standard / FLEX MBO feeds, separate contract)
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.jquants.com/v2
+      documented: true
+      note: Host answers HTTP 403 without credentials (auth-gated, alive).
+    - protocol: FlatFiles
+      documented: true
+      note: Bulk gzipped CSV via /bulk/list and /bulk/get REST endpoints; J-Quants Pro also delivers CSV over SFTP.
+    - protocol: Snowflake
+      documented: true
+      note: J-Quants Pro (corporate, sales-gated) delivers datasets via Snowflake shares.
+    - protocol: MulticastFeed
+      documented: true
+      note: FLEX Standard and FLEX MBO real-time order/execution feeds for institutions; sales-gated on jpx.co.jp, not part of the self-serve portal.
+    - protocol: WebSocket
+      documented: false
+      note: No WebSocket surface documented anywhere on the J-Quants portal.
+  probes:
+    - url: https://jpx-jquants.com/en
+      status: 200
+    - url: https://jpx-jquants.com/en/spec
+      status: 200
+    - url: https://jpx-jquants.com/llms.txt
+      status: 200
+    - url: https://jpx-jquants.com/en/register
+      status: 200
+    - url: https://jpx-jquants.com/en/spec/rate-limits
+      status: 200
+    - url: https://jpx-jquants.com/en/spec/mcp-server
+      status: 200
+    - url: https://jpx-jquants.com/en/spec/jquants-cli
+      status: 200
+    - url: https://api.jquants.com/v2/equities/bars/daily
+      status: 403
+      note: Auth-gated without x-api-key, as documented.
+    - url: https://jpx-jquants.com/ja/openapi.json
+      status: 404
+      note: /openapi.json 307-redirects here; returns the portal 404 page, so no machine-readable spec.
+    - url: https://www.jpx.co.jp/english/markets/paid-info-equities/realtime/index.html
+      status: 200
+      note: FLEX Standard / FLEX MBO real-time feed outline, fees, and application pages.
+    - url: https://pro.jpx-jquants.com/
+      status: 200
+    - url: https://dc.jpx-jquants.com/en
+      status: 200
+    - url: https://github.com/J-Quants
+      status: 200
+sources:
+  - url: https://jpx-jquants.com/llms.txt
+    type: Documentation
+    note: States V2 base URL https://api.jquants.com/v2/, x-api-key auth, plan rate limits, individual-investor-only licensing, and V1 deprecation.
+  - url: https://jpx-jquants.com/en/spec
+    type: APIReference
+    note: Full V2 reference - equities, markets, indices, fins, derivatives, EDINET, TDnet, bulk download - plus MCP server and CLI guides.
+  - url: https://jpx-jquants.com/en/spec/data-spec
+    type: Documentation
+    note: Plan matrix mapping each endpoint to Free/Light/Standard/Premium and add-ons (minute bars, tick, TDnet).
+  - url: https://www.jpx.co.jp/english/markets/other-data-services/j-quants-api/index.html
+    type: Documentation
+    note: Official JPX corporate page for the J-Quants API service.
+  - url: https://www.jpx.co.jp/english/markets/paid-info-equities/realtime/index.html
+    type: Documentation
+    note: Institutional real-time market data (FLEX Standard, FLEX MBO) - sales-gated with fee schedule and application.
+  - url: https://github.com/J-Quants
+    type: GitHubOrganization
+    note: Official clients (Python, R, Go, JVM), quick-start notebooks, j-quants-doc-mcp MCP server, and jquants-cli; no OpenAPI spec published.
+actions:
+  openapiHarvested: false
+  reason: |
+    No public OpenAPI/Swagger/AsyncAPI artifact exists for the J-Quants V2
+    API - the portal serves docs as Next.js pages plus llms.txt, and the
+    GitHub org ships hand-written clients rather than a spec - so the
+    openapi/ directory was intentionally left out rather than fabricating
+    a spec.
