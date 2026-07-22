@@ -1,0 +1,36 @@
+generated: '2026-07-22'
+method: searched
+source: https://jpx-jquants.com/en/spec
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: >-
+      The API authenticates with a static x-api-key header issued from the
+      dashboard; OAuth2 (Cognito PKCE) is used only for the CLI's browser
+      login to obtain that key, not for API authorization.
+  - id: oidc
+    conforms: false
+    evidence: No openid-configuration published on any host (all probes 403/404).
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors are a plain JSON {"message": "..."} envelope per the Response
+      Status page, not application/problem+json.
+  - id: pagination
+    conforms: true
+    evidence: >-
+      Documented token pagination via pagination_key request/response field
+      (https://jpx-jquants.com/en/spec/pagination), plus cursor-based
+      differential retrieval (https://jpx-jquants.com/en/spec/cursor).
+  - id: idempotency
+    conforms: false
+    evidence: Read-only GET surface; no idempotency-key contract documented.
+  - id: http-content-negotiation-gzip
+    conforms: true
+    evidence: Gzip compression of API responses documented (https://jpx-jquants.com/en/spec/gzip-compression).
+  - id: json:api
+    conforms: false
+    evidence: Responses are plain JSON with a top-level data array, not JSON:API.
+  - id: fapi
+    conforms: false
+    evidence: Market-data distribution API, not an Open Banking/FAPI-profiled surface.

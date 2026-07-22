@@ -1,0 +1,61 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: JPX (Japan Exchange Group)
+providerId: jpx
+created: '2026-07-22'
+modified: '2026-07-22'
+generated: '2026-07-22'
+method: searched
+tags:
+  - Market Data
+  - Subscriptions
+description: >-
+  J-Quants API is sold as four monthly subscription tiers for individual
+  investors (prices in JPY, tax included), differing in rate limit, historical
+  depth, dataset coverage, and CSV/bulk download availability, plus paid
+  add-ons (minute/tick stock prices, TDnet company disclosure).
+sources:
+  - https://jpx-jquants.com/en#pricing
+  - https://jpx-jquants.com/en/spec/data-spec
+plans:
+  - id: jquants-free
+    name: Free
+    type: free
+    price: JPY 0 / month
+    description: >-
+      2 years of history excluding the most recent 12 weeks. Listed issue
+      master, daily OHLCV, financial summary, earnings calendar, trading
+      calendar. 5 requests/min. No CSV/bulk download (except market calendar).
+  - id: jquants-light
+    name: Light
+    type: subscription
+    price: JPY 1,650 / month (tax included)
+    description: >-
+      5 years of history. Adds TOPIX daily OHLC and trading-by-investor-type
+      data; CSV download enabled; add-ons available. 60 requests/min.
+  - id: jquants-standard
+    name: Standard
+    type: subscription
+    price: JPY 3,300 / month (tax included)
+    description: >-
+      10 years of history. Adds full index OHLC, Nikkei 225 options, margin
+      trading data, short-selling reports and ratios, and the EDINET datasets
+      (major shareholders, cross-shareholdings, large volume holdings). 120
+      requests/min.
+  - id: jquants-premium
+    name: Premium
+    type: subscription
+    price: JPY 16,500 / month (tax included)
+    description: >-
+      Up to 20 years of history. Adds morning-session prices, full financial
+      statements (BS/PL/CF), dividends, futures/options universe, and
+      breakdown trading data, with near-real-time financial data updates. 500
+      requests/min.
+addons:
+  - id: jquants-addon-minute-tick
+    name: Stock Prices (minute-OHLC, Tick) add-on
+    description: Minute bars and tick trade data; independent 60 requests/min limit.
+  - id: jquants-addon-tdnet
+    name: TDnet/Company Disclosure add-on
+    description: Disclosure index, document files, and bulk CSV; independent 100 requests/min limit.

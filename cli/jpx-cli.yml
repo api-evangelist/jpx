@@ -1,0 +1,57 @@
+generated: '2026-07-22'
+method: searched
+source: https://jpx-jquants.com/en/spec/jquants-cli
+name: jquants
+description: >-
+  Official J-Quants CLI (Rust) for retrieving Japanese stock market data via
+  J-Quants API V2 - all V2 endpoint groups (equities, markets, financials,
+  indices, derivatives, bulk download), four output formats, and AI-agent
+  skills integration.
+repository: https://github.com/J-Quants/jquants-cli
+license: MIT
+install:
+  - method: homebrew
+    command: brew install J-Quants/tap/jquants
+  - method: github-releases
+    url: https://github.com/J-Quants/jquants-cli/releases
+    platforms: [macos-x86_64, macos-arm64, linux-x86_64-musl, linux-arm64-musl, windows-x86_64]
+  - method: cargo
+    command: cargo install --path .
+    notes: Build from source; Rust stable, MSRV 1.78+.
+authentication:
+  - flow: browser-login
+    command: jquants login
+    notes: >-
+      Opens a browser and authenticates the J-Quants account via Cognito
+      OAuth2 PKCE; the API key is saved to ~/.config/jquants/credentials.json.
+      jquants logout clears the session and removes the credentials file.
+  - flow: api-key
+    env: JQUANTS_API_KEY
+    notes: Direct API key via environment variable or .env file; key from https://jpx-jquants.com/dashboard/api-keys.
+  - priority: credentials.json api_key, then JQUANTS_API_KEY, then error
+command_groups:
+  - group: eq
+    description: Equities - listed issue master, daily/morning-session OHLCV, minute bars, tick trades, earnings calendar, investor types, schema.
+  - group: mkt
+    description: Markets - trading calendar, short sale reports, short ratio by sector, margin interest, margin alerts, breakdown trading data.
+  - group: deriv
+    description: Derivatives - futures and options daily OHLC, Nikkei 225 options.
+  - group: fins
+    description: Financials - summary figures, BS/PL/CF statements, dividends.
+  - group: idx
+    description: Indices - index and TOPIX daily OHLC.
+  - group: td
+    description: TDnet/company disclosure index, files, and bulk CSV (add-on).
+  - group: bulk
+    description: Bulk CSV download - list downloadable files and fetch download URLs.
+  - group: schema
+    description: Show endpoint field names/types (works unauthenticated).
+  - group: login / logout
+    description: Browser OAuth2 PKCE login and session/credential cleanup.
+  - group: completion
+    description: Generate shell completion scripts (bash/zsh/fish/powershell).
+  - group: skills
+    description: Install the bundled AI-agent skill (jquants skills add / npx skills add J-Quants/jquants-cli).
+output:
+  formats: [table, json, csv, parquet]
+  notes: Auto-switches to CSV when piped (TTY detection). Global options --output, --save, -f/--fields go before the subcommand.

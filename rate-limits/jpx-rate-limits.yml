@@ -1,0 +1,62 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: JPX (Japan Exchange Group)
+providerId: jpx
+created: '2026-07-22'
+modified: '2026-07-22'
+generated: '2026-07-22'
+method: searched
+tags:
+  - Rate Limiting
+  - Market Data
+description: >-
+  J-Quants API rate limits are per subscription plan (requests per minute),
+  with separate per-endpoint limits on the financial-data endpoints and
+  independent limits for add-on APIs. Exceeding a limit returns 429;
+  significantly exceeding it blocks all access for about 5 minutes.
+sources:
+  - https://jpx-jquants.com/en/spec/rate-limits
+responseCodes:
+  throttled: 429
+limits:
+  - name: Free plan
+    scope: plan
+    metric: requests_per_minute
+    limit: 5
+    timeFrame: minute
+  - name: Light plan
+    scope: plan
+    metric: requests_per_minute
+    limit: 60
+    timeFrame: minute
+  - name: Standard plan
+    scope: plan
+    metric: requests_per_minute
+    limit: 120
+    timeFrame: minute
+  - name: Premium plan
+    scope: plan
+    metric: requests_per_minute
+    limit: 500
+    timeFrame: minute
+  - name: Financial Data (Summary only) /v2/fins/summary
+    scope: endpoint
+    metric: requests_per_minute
+    limit: 60
+    timeFrame: minute
+  - name: Financial Statement Data (BS/PL/CF) /v2/fins/details
+    scope: endpoint
+    metric: requests_per_minute
+    limit: 60
+    timeFrame: minute
+  - name: Stock Prices add-on (minute-OHLC, tick)
+    scope: add-on
+    metric: requests_per_minute
+    limit: 60
+    timeFrame: minute
+  - name: TDnet/Company Disclosure add-on
+    scope: add-on
+    metric: requests_per_minute
+    limit: 100
+    timeFrame: minute

@@ -1,0 +1,33 @@
+generated: '2026-07-22'
+method: searched
+source: live probes of /.well-known/ on apis.yml hosts
+notes: >-
+  No well-known discovery documents are published. api.jquants.com returns 403
+  for all paths (gateway rejects unauthenticated requests); jpx-jquants.com
+  307-redirects /.well-known/* into the locale router which 404s; www.jpx.co.jp
+  404s all probed paths.
+hosts:
+  - host: https://api.jquants.com
+    documents:
+      - {path: /.well-known/security.txt, status: 403}
+      - {path: /.well-known/openid-configuration, status: 403}
+      - {path: /.well-known/oauth-authorization-server, status: 403}
+      - {path: /.well-known/oauth-protected-resource, status: 403}
+      - {path: /.well-known/api-catalog, status: 403}
+      - {path: /.well-known/ai-plugin.json, status: 403}
+  - host: https://jpx-jquants.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404, note: 307 to /ja/.well-known/... then 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404, note: 307 to locale router then 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404, note: 307 to locale router then 404}
+      - {path: /.well-known/api-catalog, status: 404, note: 307 to locale router then 404}
+      - {path: /.well-known/ai-plugin.json, status: 404, note: 307 to locale router then 404}
+  - host: https://www.jpx.co.jp
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}

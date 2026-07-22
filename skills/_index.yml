@@ -1,0 +1,18 @@
+generated: '2026-07-22'
+method: searched
+source: https://github.com/J-Quants/jquants-cli/tree/main/.claude/skills/jquants-cli-usage
+skills:
+  - file: jpx-jquants-cli-usage.md
+    name: jquants-cli-usage
+    description: >-
+      Provider-published Agent Skill (saved verbatim from the official
+      jquants-cli repo) for building and running J-Quants CLI commands -
+      equities/markets/derivatives/financials/indices data retrieval, plan
+      availability checks, bulk-vs-API decisions, and rate-limit-aware usage.
+    api: https://api.jquants.com/v2
+    operations: []
+    install: npx skills add J-Quants/jquants-cli
+    notes: >-
+      The upstream skill directory also ships reference files
+      (commands-eq/mkt/deriv/fins/idx/td/bulk, plans, data-update-schedule)
+      not mirrored here; SKILL.md is the entry point.

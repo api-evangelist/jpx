@@ -1,0 +1,51 @@
+generated: '2026-07-22'
+method: searched
+source: https://github.com/J-Quants
+packages:
+  - language: python
+    registry: pypi
+    name: jquants-api-client
+    url: https://pypi.org/project/jquants-api-client/
+    install: pip install jquants-api-client
+    repository: https://github.com/J-Quants/jquants-api-client-python
+    version: 2.3.0
+    official: true
+  - language: rust
+    registry: homebrew
+    name: jquants (J-Quants CLI)
+    url: https://github.com/J-Quants/homebrew-tap
+    install: brew install J-Quants/tap/jquants
+    repository: https://github.com/J-Quants/jquants-cli
+    notes: Pre-built binaries also published on GitHub Releases for macOS/Linux/Windows.
+    official: true
+  - language: r
+    registry: github
+    name: JQuantsR
+    url: https://github.com/J-Quants/JQuantsR
+    install: devtools::install_github("J-Quants/JQuantsR")
+    repository: https://github.com/J-Quants/JQuantsR
+    official: true
+  - language: go
+    registry: github
+    name: jquants-api-go
+    url: https://github.com/J-Quants/jquants-api-go
+    install: go get github.com/J-Quants/jquants-api-go
+    repository: https://github.com/J-Quants/jquants-api-go
+    notes: Not indexed on pkg.go.dev at probe time (404); install from GitHub module path.
+    official: true
+  - language: clojure
+    registry: clojars
+    name: net.clojars.hellonico/jquants-api-jvm
+    url: https://clojars.org/net.clojars.hellonico/jquants-api-jvm
+    install: 'deps.edn: net.clojars.hellonico/jquants-api-jvm {:mvn/version "0.2.11"}'
+    repository: https://github.com/J-Quants/jquants-api-jvm
+    notes: JVM wrapper repo lives in the J-Quants GitHub org; Clojars artifact is published under the maintainer's group.
+    official: true
+  - language: python
+    registry: github
+    name: j-quants-doc-mcp
+    url: https://github.com/J-Quants/j-quants-doc-mcp
+    install: uv tool install git+https://github.com/J-Quants/j-quants-doc-mcp.git
+    repository: https://github.com/J-Quants/j-quants-doc-mcp
+    notes: Official documentation MCP server; not published to PyPI at probe time.
+    official: true

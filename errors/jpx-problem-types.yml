@@ -1,0 +1,40 @@
+generated: '2026-07-22'
+method: searched
+source: https://jpx-jquants.com/en/spec/response-status
+format: json-message-envelope
+envelope:
+  description: >-
+    Errors return a JSON object with a human-readable message field; the API
+    does not use RFC 9457 application/problem+json.
+  example: '{"message": "This API requires at least 1 parameter as follows; date, code"}'
+problems:
+  - status: 200
+    title: OK
+    description: The request was successful.
+  - status: 210
+    title: No Content (Partial)
+    description: >-
+      Data could not be retrieved, for reasons such as being outside the
+      available time window or a non-existent issue code. Used by some APIs
+      such as the Morning Session Stock Prices (OHLC) API.
+  - status: 400
+    title: Bad Request
+    description: Request parameters are invalid or required parameters are missing.
+    remediation: Check required parameters (e.g. date, code) and their formats.
+  - status: 403
+    title: Forbidden
+    description: >-
+      Access permission is denied. Returned when accessing data not included in
+      your subscription plan, when an incorrect API key is configured, or when
+      an incorrect resource path is specified.
+    remediation: Verify the x-api-key header, the resource path, and that your plan includes the dataset.
+  - status: 429
+    title: Too Many Requests
+    description: >-
+      The number of requests exceeded the plan rate limit. Significantly
+      exceeding the limit can block access entirely for about 5 minutes.
+    remediation: Wait before retrying; do not retry immediately. Respect per-plan requests/minute limits.
+  - status: 500
+    title: Internal Server Error
+    description: An error occurred on the server.
+    remediation: Retry after some time.

@@ -1,0 +1,101 @@
+# J-Quants API
+
+> REST API providing historical Japanese stock market data (equities, derivatives, indices, financials) operated by Japan Exchange Group (JPX). Subscription-based service for individual investors only. Current version: V2. V1 is deprecated.
+
+日本取引所グループが運営する日本株式市場データ配信APIです。株価・先物・オプション・指数・財務情報などのヒストリカルデータをREST APIおよびCSV形式で提供します。個人投資家向けのサブスクリプションサービスです。
+
+CAUTION:
+This service is intended for individual investors only. Commercial use, academic/institutional research, and use by institutional investor quantitative teams are strictly prohibited under JPX Terms of Service.
+
+本サービスは個人投資家専用です。商用利用・学術・機関投資家のクオンツ運用目的での利用はJPX利用規約により固く禁止されています。
+
+**Base URL**: `https://api.jquants.com/v2/`
+**Portal**: https://jpx-jquants.com
+**Auth**: API key via `x-api-key` header (obtain from dashboard after subscription)
+
+IMPORTANT:
+V1 API (/v1/... endpoints) is deprecated. Users registered on/after 2025-12-22 must use V2 only. All V1 users should migrate to V2 immediately. Token-based auth from V1 is abolished in V2.
+
+Automated access must stay within plan rate limits. Unauthorized scraping, credential abuse, and circumvention of subscription restrictions are prohibited under JPX Terms of Service. Commercial use, academic/institutional research, and institutional investor quant operations are also strictly prohibited.
+
+## Getting Started
+
+- [Quick Start (JA)](https://jpx-jquants.com/ja/spec/quickstart): ユーザ登録・APIキー取得・最初のリクエスト
+- [Quick Start (EN)](https://jpx-jquants.com/en/spec/quickstart): Sign up, get API key, send first request
+- [V1→V2 Migration (JA)](https://jpx-jquants.com/ja/spec/migration-v1-v2): エンドポイント対応表・認証方式変更
+- [V1→V2 Migration (EN)](https://jpx-jquants.com/en/spec/migration-v1-v2): Endpoint mapping, auth changes
+- [MCP Server Guide (JA)](https://jpx-jquants.com/ja/spec/mcp-server): Claude/Cursor向けMCPサーバー設定
+- [MCP Server Guide (EN)](https://jpx-jquants.com/en/spec/mcp-server): MCP server setup for Claude/Cursor
+
+## Plans & Limits
+
+- [Plan & Data Spec (JA)](https://jpx-jquants.com/ja/spec/data-spec): プラン別API利用可否・データ格納期間一覧
+- [Rate Limits (JA)](https://jpx-jquants.com/ja/spec/rate-limits): Free=5req/min, Light=60req/min, Standard=120req/min, Premium=500req/min
+- [Rate Limits (EN)](https://jpx-jquants.com/en/spec/rate-limits): Rate limit details per plan
+
+## API Reference — Equities
+
+- [Equity Master (JA)](https://jpx-jquants.com/ja/spec/eq-master) / [EN](https://jpx-jquants.com/en/spec/eq-master): 上場銘柄一覧（銘柄コード・市場区分・セクター）
+- [Daily OHLCV (JA)](https://jpx-jquants.com/ja/spec/eq-bars-daily) / [EN](https://jpx-jquants.com/en/spec/eq-bars-daily): 株価四本値（日次・調整後価格含む）
+- [Morning Session OHLCV (JA)](https://jpx-jquants.com/ja/spec/eq-bars-daily-am) / [EN](https://jpx-jquants.com/en/spec/eq-bars-daily-am): 前場四本値（Premium）
+- [Minute Bars (JA)](https://jpx-jquants.com/ja/spec/eq-bars-minute) / [EN](https://jpx-jquants.com/en/spec/eq-bars-minute): 株価分足（アドオン）
+- [Earnings Calendar (JA)](https://jpx-jquants.com/ja/spec/eq-earnings-cal) / [EN](https://jpx-jquants.com/en/spec/eq-earnings-cal): 決算発表予定日（全プラン）
+- [Investor Types (JA)](https://jpx-jquants.com/ja/spec/eq-investor-types) / [EN](https://jpx-jquants.com/en/spec/eq-investor-types): 投資部門別情報（Light以上・週次）
+- [Equity Tick (JA)](https://jpx-jquants.com/ja/spec/eq-trades) / [EN](https://jpx-jquants.com/en/spec/eq-trades): 株式tick（約定）データ
+
+## API Reference — Derivatives
+
+- [Futures Daily OHLCV (JA)](https://jpx-jquants.com/ja/spec/drv-bars-daily-fut) / [EN](https://jpx-jquants.com/en/spec/drv-bars-daily-fut): 先物四本値（Premium）
+- [Options Daily OHLCV (JA)](https://jpx-jquants.com/ja/spec/drv-bars-daily-opt) / [EN](https://jpx-jquants.com/en/spec/drv-bars-daily-opt): オプション四本値（Premium）
+- [Nikkei 225 Options (JA)](https://jpx-jquants.com/ja/spec/drv-bars-daily-opt-225) / [EN](https://jpx-jquants.com/en/spec/drv-bars-daily-opt-225): 日経225オプション四本値（Standard以上）
+
+## API Reference — Indices
+
+- [Index Daily OHLCV (JA)](https://jpx-jquants.com/ja/spec/idx-bars-daily) / [EN](https://jpx-jquants.com/en/spec/idx-bars-daily): 指数四本値（Standard以上）
+- [TOPIX Daily OHLCV (JA)](https://jpx-jquants.com/ja/spec/idx-bars-daily-topix) / [EN](https://jpx-jquants.com/en/spec/idx-bars-daily-topix): TOPIX四本値（Light以上）
+
+## API Reference — Financials
+
+- [Financial Summary (JA)](https://jpx-jquants.com/ja/spec/fin-summary) / [EN](https://jpx-jquants.com/en/spec/fin-summary): 財務情報（EPS・PER・PBR等）
+- [Financial Details BS/PL/CF (JA)](https://jpx-jquants.com/ja/spec/fin-details) / [EN](https://jpx-jquants.com/en/spec/fin-details): 財務諸表（Premium）
+- [Dividend Info (JA)](https://jpx-jquants.com/ja/spec/fin-dividend) / [EN](https://jpx-jquants.com/en/spec/fin-dividend): 配当金情報（Premium）
+
+## API Reference — Market Data
+
+- [Market Calendar (JA)](https://jpx-jquants.com/ja/spec/mkt-cal) / [EN](https://jpx-jquants.com/en/spec/mkt-cal): 取引カレンダー（祝日・立会日）
+- [Short Sale Report (JA)](https://jpx-jquants.com/ja/spec/mkt-short-sale) / [EN](https://jpx-jquants.com/en/spec/mkt-short-sale): 空売り残高報告（Standard以上）
+- [Short Ratio by Sector (JA)](https://jpx-jquants.com/ja/spec/mkt-short-ratio) / [EN](https://jpx-jquants.com/en/spec/mkt-short-ratio): 業種別空売り比率（Standard以上）
+- [Margin Interest Weekly (JA)](https://jpx-jquants.com/ja/spec/mkt-margin-int) / [EN](https://jpx-jquants.com/en/spec/mkt-margin-int): 信用取引週末残高（Standard以上）
+- [Margin Alert Daily (JA)](https://jpx-jquants.com/ja/spec/mkt-margin-alert) / [EN](https://jpx-jquants.com/en/spec/mkt-margin-alert): 日々公表信用取引残高（Standard以上）
+- [Market Breakdown (JA)](https://jpx-jquants.com/ja/spec/mkt-breakdown) / [EN](https://jpx-jquants.com/en/spec/mkt-breakdown): 売買内訳データ（Premium）
+- [Major Shareholders (EDINET) (JA)](https://jpx-jquants.com/ja/spec/edinet-major-shareholders) / [EN](https://jpx-jquants.com/en/spec/edinet-major-shareholders): 大株主状況（EDINET）（有価証券報告書の大株主上位10名・Standard以上）
+- [Cross-Shareholdings (EDINET) (JA)](https://jpx-jquants.com/ja/spec/edinet-cross-shareholdings) / [EN](https://jpx-jquants.com/en/spec/edinet-cross-shareholdings): 政策保有株式（EDINET）（有価証券報告書の政策保有株式情報・3スコープのネスト構造・Standard以上）
+- [Large Volume Holding Reports (EDINET) (JA)](https://jpx-jquants.com/ja/spec/edinet-large-volume-shareholders) / [EN](https://jpx-jquants.com/en/spec/edinet-large-volume-shareholders): 大量保有報告書（EDINET）（大量保有報告書・変更報告書の保有状況、提出者・共同保有者のネスト構造・Standard以上）
+
+## API Reference — Bulk Download
+
+- [Bulk Overview (JA)](https://jpx-jquants.com/ja/spec/bulk) / [EN](https://jpx-jquants.com/en/spec/bulk): バルクダウンロード概要
+- [Bulk List (JA)](https://jpx-jquants.com/ja/spec/bulk-list) / [EN](https://jpx-jquants.com/en/spec/bulk-list): 取得可能ファイル一覧
+- [Bulk Get (JA)](https://jpx-jquants.com/ja/spec/bulk-get) / [EN](https://jpx-jquants.com/en/spec/bulk-get): ファイルダウンロード
+
+## Common Specifications
+
+- [Pagination (JA)](https://jpx-jquants.com/ja/spec/pagination): ページネーション仕様
+- [Response Status (JA)](https://jpx-jquants.com/ja/spec/response-status): HTTPステータスコード一覧
+- [Gzip Compression (JA)](https://jpx-jquants.com/ja/spec/gzip-compression): 圧縮レスポンス対応
+- [Data Update Schedule (JA)](https://jpx-jquants.com/ja/spec/data-update): データ更新スケジュール
+- [Fix Data Info (JA)](https://jpx-jquants.com/ja/spec/fix-data-info): データ修正履歴
+
+## Help & Support
+
+- [FAQ Top (JA)](https://jpx-jquants.com/ja/help) / [EN](https://jpx-jquants.com/en/help): よくある質問トップ
+- [About the Service (JA)](https://jpx-jquants.com/ja/help/about): サービス概要FAQ
+- [Plan FAQ (JA)](https://jpx-jquants.com/ja/help/plan): プラン・契約に関するFAQ
+- [Data FAQ (JA)](https://jpx-jquants.com/ja/help/data): データに関するFAQ
+- [Usage FAQ (JA)](https://jpx-jquants.com/ja/help/usage): 利用目的およびデータの利用に関するFAQ
+- [Payment FAQ (JA)](https://jpx-jquants.com/ja/help/payment): 支払いに関するFAQ
+- [Account FAQ (JA)](https://jpx-jquants.com/ja/help/account): アカウントに関するFAQ
+- [Incident Info (JA)](https://jpx-jquants.com/ja/help/incident): サービス障害情報
+- [Notice (JA)](https://jpx-jquants.com/ja/help/notice): お知らせ
+- [Release Notes (JA)](https://jpx-jquants.com/ja/spec/release) / [EN](https://jpx-jquants.com/en/spec/release): リリースノート
+- [Sign Up (JA)](https://jpx-jquants.com/ja/register) / [EN](https://jpx-jquants.com/en/register): 新規ユーザー登録

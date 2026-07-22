@@ -1,0 +1,40 @@
+generated: '2026-07-22'
+method: searched
+source: https://jpx-jquants.com/en/spec/release
+scheme: dated-release-notes
+current_version: v2
+entries:
+  - date: '2026-07-13'
+    type: [new-feature]
+    highlights:
+      - Large Volume Holding Reports (EDINET) API released for Standard and Premium plans (/v2/edinet/large-volume-shareholders).
+  - date: '2026-07-06'
+    type: [new-feature]
+    highlights:
+      - Major Shareholders (EDINET) API released for Standard and Premium plans (/v2/edinet/major-shareholders).
+      - Cross-Shareholdings (EDINET) API released for Standard and Premium plans (/v2/edinet/cross-shareholdings).
+  - date: '2026-06-29'
+    type: [update, fix]
+    highlights:
+      - Rights issues added to price adjustment for Stock Prices (OHLC); past adjusted values corrected for 11 issues.
+  - date: '2026-06-08'
+    type: [new-feature]
+    highlights:
+      - Financial Data APIs (fins/summary, fins/details) upgraded to near-real-time updates on the Premium plan, with cursor-based differential retrieval.
+  - date: '2026-05-26'
+    type: [new-feature, update]
+    highlights:
+      - Product category field (ProdCat) added to the Listed Issue Master, enabling ETF/REIT filtering.
+  - date: '2026-05-18'
+    type: [new-feature]
+    highlights:
+      - TDnet/Company Disclosure add-on released (/v2/td/list, /v2/td/files, /v2/td/bulk).
+  - date: '2026-04-13'
+    type: [new-feature]
+    highlights:
+      - Futures (OHLC) coverage expanded with USD/JPY, CNH/JPY and EUR/JPY futures.
+      - J-Quants CLI tool (jquants) released via Homebrew and GitHub Releases.
+  - date: '2026-04-06'
+    type: [new-feature]
+    highlights:
+      - Indices (OHLC) coverage expanded with dividend-included indices and the JPX Start-Up Acceleration 100 Index.

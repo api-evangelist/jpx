@@ -1,0 +1,52 @@
+generated: '2026-07-22'
+method: searched
+source: https://github.com/J-Quants/j-quants-doc-mcp
+status: published
+docs: https://jpx-jquants.com/en/spec/mcp-server
+server:
+  name: j-quants-doc-mcp
+  transport: stdio
+  distribution: source-install
+  install:
+    - 'uv tool install git+https://github.com/J-Quants/j-quants-doc-mcp.git'
+    - 'pip install git+https://github.com/J-Quants/j-quants-doc-mcp.git'
+  command: uvx
+  args: [j-quants-doc-mcp]
+  language: python
+  requires: 'Python >= 3.10'
+  repository: https://github.com/J-Quants/j-quants-doc-mcp
+notes: >-
+  Official documentation MCP server from Japan Exchange Group's J-Quants team.
+  It serves the J-Quants API specification to AI clients (Claude Desktop,
+  Cursor): endpoint search and detail, implementation patterns with runnable
+  sample code, V1-to-V2 migration guidance, and plan/pricing FAQ answers. It is
+  a docs/companion server - it does not proxy live market-data calls; generated
+  code calls https://api.jquants.com/v2 with the user's x-api-key.
+tools:
+  - name: health_check
+    description: Simple health check confirming the server is running.
+  - name: search_endpoints
+    description: >-
+      Search J-Quants API endpoints by keyword and optional category (auth,
+      listed, prices, fins, etc.), for API version v1 or v2.
+  - name: describe_endpoint
+    description: >-
+      Return endpoint detail - name, path, method, parameters, response
+      fields, auth requirement, and available plans (e.g. eq-master,
+      eq-bars-daily for V2; daily_quotes for V1).
+  - name: get_pattern
+    description: >-
+      Return implementation pattern guidance with sample code (auth flow,
+      pagination, rate-limit handling, bulk download, financial analysis).
+  - name: fetch_spec_page
+    description: >-
+      Fetch a specification page by path, including reference-data pages such
+      as holiday divisions and market segment codes.
+  - name: migrate_v1_to_v2
+    description: >-
+      Provide the V1-to-V2 migration guide - endpoint correspondence table and
+      change notes - for a given V1 endpoint or the whole guide.
+  - name: get_info
+    description: >-
+      Answer questions outside the API specification - plan types, pricing,
+      contracts, payment, data ranges per plan, upgrades and cancellation.

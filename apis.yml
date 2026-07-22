@@ -13,7 +13,7 @@ description: JPX (Japan Exchange Group) operates the Tokyo Stock Exchange, Osaka
   Institutional real-time data (FLEX Standard and FLEX MBO order-book feeds) and
   corporate historical data (J-Quants Pro via API/SFTP/Snowflake, J-Quants
   DataCube) are sales-gated services.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/jpx.png
 tags:
 - Financial
 - Market Data
@@ -25,7 +25,7 @@ tags:
 - Reference Data
 - Japan
 created: '2026-07-21'
-modified: '2026-07-21'
+modified: '2026-07-22'
 specificationVersion: '0.19'
 apis:
 - aid: jpx:j-quants-equities-api
@@ -165,6 +165,46 @@ apis:
     bulk files (/bulk/list) and download gzipped CSV extracts (/bulk/get) for
     supported datasets.
 common:
+- type: DomainSecurity
+  url: security/jpx-domain-security.yml
+- type: LLMsTxt
+  url: llms/jpx-llms.txt
+- type: MCPServer
+  url: mcp/jpx-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Packages
+  url: packages/jpx-packages.yml
+- type: SDKs
+  url: packages/jpx-packages.yml
+- type: CLI
+  url: cli/jpx-cli.yml
+- type: Authentication
+  url: authentication/jpx-authentication.yml
+- type: Conventions
+  url: conventions/jpx-conventions.yml
+- type: ErrorCatalog
+  url: errors/jpx-problem-types.yml
+- type: Conformance
+  url: conformance/jpx-conformance.yml
+- type: Lifecycle
+  url: lifecycle/jpx-lifecycle.yml
+- type: StatusPage
+  url: https://jpx-jquants.com/en/help/incident
+- type: Deprecation
+  url: https://jpx-jquants.com/en/spec/migration-v1-v2
+- type: ChangeLog
+  url: changelog/jpx-changelog.yml
+- type: ReleaseNotes
+  url: https://jpx-jquants.com/en/spec/release
+- type: RateLimits
+  url: rate-limits/jpx-rate-limits.yml
+- type: Plans
+  url: plans/jpx-plans.yml
+- type: GettingStarted
+  url: https://jpx-jquants.com/en/spec/quickstart
+- type: APIReference
+  url: https://jpx-jquants.com/en/spec
 - type: Website
   url: https://www.jpx.co.jp/english/
 - type: Portal

@@ -1,0 +1,27 @@
+generated: '2026-07-22'
+method: searched
+source: https://jpx-jquants.com/en/spec/quickstart
+docs: https://jpx-jquants.com/en/spec/quickstart
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  oauth2_flows: []
+schemes:
+  - name: apiKey
+    type: apiKey
+    in: header
+    parameter: x-api-key
+    description: >-
+      All J-Quants API V2 requests authenticate with an API key sent in the
+      x-api-key header. Keys are issued from the dashboard (Settings > API Key,
+      https://jpx-jquants.com/dashboard/api-keys) after registering and
+      subscribing to a plan (Free/Light/Standard/Premium). The key itself has
+      no expiration date; re-issuance and deletion are possible from the
+      dashboard.
+notes: >-
+  V1's token method (ID token / refresh token via /v1/token/auth_user and
+  /v1/token/auth_refresh) is abolished in V2. The official jquants CLI offers a
+  browser login (jquants login) that authenticates against the J-Quants account
+  via Cognito OAuth2 PKCE and stores the API key in
+  ~/.config/jquants/credentials.json; the API itself is key-authenticated, and
+  there is no OAuth scope surface on api.jquants.com.

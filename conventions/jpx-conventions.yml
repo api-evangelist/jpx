@@ -1,0 +1,58 @@
+generated: '2026-07-22'
+method: searched
+source: https://jpx-jquants.com/en/spec/pagination
+authentication:
+  style: api-key
+  header: x-api-key
+  docs: https://jpx-jquants.com/en/spec/quickstart
+  artifact: authentication/jpx-authentication.yml
+idempotency:
+  supported: null
+  notes: >-
+    The public surface is read-only (GET data retrieval); no idempotency-key
+    header or write-idempotency contract is documented.
+pagination:
+  style: token
+  request_param: pagination_key
+  response_field: pagination_key
+  docs: https://jpx-jquants.com/en/spec/pagination
+  notes: >-
+    Large responses include a pagination_key; pass it back unchanged with the
+    same query to fetch the next page. Absence of pagination_key means all
+    matching data has been returned. The key's value changes on each page.
+differential_retrieval:
+  style: cursor
+  request_param: cursor
+  docs: https://jpx-jquants.com/en/spec/cursor
+  notes: >-
+    Near-real-time endpoints (fins/summary, fins/details on Premium; TDnet
+    disclosures) return a cursor; passing it with date=today returns only data
+    published since the previous call.
+compression:
+  gzip: true
+  docs: https://jpx-jquants.com/en/spec/gzip-compression
+versioning:
+  style: uri-path
+  current: v2
+  artifact: lifecycle/jpx-lifecycle.yml
+error_envelope:
+  shape: '{"message": "..."}'
+  artifact: errors/jpx-problem-types.yml
+  docs: https://jpx-jquants.com/en/spec/response-status
+rate_limit_signaling:
+  throttled_status: 429
+  docs: https://jpx-jquants.com/en/spec/rate-limits
+  artifact: rate-limits/jpx-rate-limits.yml
+  notes: >-
+    Per-plan requests/minute limits (Free 5, Light 60, Standard 120, Premium
+    500); significantly exceeding the limit blocks all access for about 5
+    minutes. No documented rate-limit response headers - back off on 429.
+plan_gating:
+  notes: >-
+    Dataset availability and history depth are gated by plan
+    (Free/Light/Standard/Premium) and add-ons (minute/tick prices, TDnet
+    disclosures); 403 is returned for datasets outside the subscribed plan.
+  docs: https://jpx-jquants.com/en/spec/data-spec
+  artifact: plans/jpx-plans.yml
+response_format:
+  notes: JSON with a top-level data array on most endpoints; bulk endpoints deliver gzipped CSV files.
