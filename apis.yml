@@ -13,6 +13,19 @@ description: JPX (Japan Exchange Group) operates the Tokyo Stock Exchange, Osaka
   Institutional real-time data (FLEX Standard and FLEX MBO order-book feeds) and
   corporate historical data (J-Quants Pro via API/SFTP/Snowflake, J-Quants
   DataCube) are sales-gated services.
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/jpx.png
 tags:
 - Financial
