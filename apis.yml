@@ -165,6 +165,10 @@ apis:
   tags:
   - Bulk
   - CSV
+  - File
+  tags_raw:
+  - Bulk
+  - CSV
   - Files
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://jpx-jquants.com/en/spec/bulk
