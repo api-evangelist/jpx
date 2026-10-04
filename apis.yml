@@ -41,6 +41,16 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/jpx.png
 tags:
+- Finance
+- Market Data
+- Stocks
+- Exchange
+- Trading
+- Derivatives
+- Indices
+- Reference Data
+- Japan
+tags_raw:
 - Financial
 - Market Data
 - Stocks
