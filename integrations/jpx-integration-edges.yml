@@ -1,0 +1,108 @@
+edges:
+- partner_name: ISO 10383 (MIC)
+  partner: null
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.iso20022.org/sites/default/files/ISO10383_MIC/ISO10383_MIC.csv
+  source: mic
+  category: registered trading venues and market segments
+  contract_reference:
+    register: ISO 10383 Market Identifier Codes (ISO 20022 registration authority)
+    spec_file: null
+    standard: ISO 10383
+    role: venue operator
+    matched_domain: jpx.co.jp
+    matched_by: domain+verified:jpx.co.jp
+    categories:
+    - NSPD
+    - RMKT
+    operating_mics:
+    - XJPX
+    mics:
+    - mic: XTK1
+      operating_mic: XJPX
+      segment: SGMT
+      market: TOKYO STOCK EXCHANGE - TOSTNET-1
+      category: RMKT
+      legal_name: TOKYO STOCK EXCHANGE, INC.
+      country: JP
+    - mic: XTKS
+      operating_mic: XJPX
+      segment: SGMT
+      market: TOKYO STOCK EXCHANGE
+      category: NSPD
+      legal_name: TOKYO STOCK EXCHANGE, INC.
+      country: JP
+    - mic: XOSE
+      operating_mic: XJPX
+      segment: SGMT
+      market: OSAKA EXCHANGE
+      category: RMKT
+      legal_name: OSAKA EXCHANGE,INC
+      country: JP
+    - mic: XTAM
+      operating_mic: XJPX
+      segment: SGMT
+      market: TOKYO STOCK EXCHANGE-TOKYO PRO MARKET
+      category: NSPD
+      legal_name: TOKYO STOCK EXCHANGE, INC.
+      country: JP
+    - mic: XTK3
+      operating_mic: XJPX
+      segment: SGMT
+      market: TOKYO STOCK EXCHANGE - TOSTNET-3
+      category: RMKT
+      legal_name: TOKYO STOCK EXCHANGE, INC.
+      country: JP
+    - mic: XTK2
+      operating_mic: XJPX
+      segment: SGMT
+      market: TOKYO STOCK EXCHANGE - TOSTNET-2
+      category: RMKT
+      legal_name: TOKYO STOCK EXCHANGE, INC.
+      country: JP
+    - mic: XJPX
+      operating_mic: XJPX
+      segment: OPRT
+      market: JAPAN EXCHANGE GROUP
+      category: RMKT
+      legal_name: JAPAN EXCHANGE GROUP, INC.
+      country: JP
+    - mic: XOSJ
+      operating_mic: XJPX
+      segment: SGMT
+      market: OSAKA EXCHANGE J-NET
+      category: RMKT
+      legal_name: OSAKA EXCHANGE,INC
+      country: JP
+    - mic: XTKT
+      operating_mic: XJPX
+      segment: SGMT
+      market: TOKYO COMMODITY EXCHANGE
+      category: RMKT
+      legal_name: TOKYO COMMODITY EXCHANGE, INC.
+      country: JP
+    detected_by: sweep-capital-markets.py
+    detected: '2026-10-15'
+  detected_by: sweep-capital-markets.py
+  first_seen: '2026-10-15'
+- partner_name: Twelve Data
+  partner: twelvedata
+  partner_match: aggregator
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://api.twelvedata.com/exchanges
+  source: twelvedata
+  matched_by: mic:XJPX->domain+verified:jpx.co.jp
+  mic: XJPX
+  detected_by: sweep-capital-markets.py
+  first_seen: '2026-10-15'
+generated: '2026-10-15'
+method: searched
+checked:
+- https://api.twelvedata.com/exchanges
+- https://www.iso20022.org/sites/default/files/ISO10383_MIC/ISO10383_MIC.csv
