@@ -1,4 +1,4 @@
-# JPX (Japan Exchange Group) (jpx)
+# JPX (Japan Exchange Group)
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,186 +66,120 @@
 
 JPX (Japan Exchange Group) operates the Tokyo Stock Exchange, Osaka Exchange, and Tokyo Commodity Exchange, and sells Japanese market data through its JPX Market Innovation & Research arm. Its developer-facing product is the J-Quants API - a self-serve, subscription REST API (Free/Light/Standard/Premium plans, x-api-key auth, base https://api.jquants.com/v2) delivering historical equities OHLCV/minute/tick bars, indices, derivatives, financial statements, short-selling and margin data, EDINET filings, and TDnet disclosures, plus bulk CSV download, an MCP server, and a CLI - licensed to individual investors only. Institutional real-time data (FLEX Standard and FLEX MBO order-book feeds) and corporate historical data (J-Quants Pro via API/SFTP/Snowflake, J-Quants DataCube) are sales-gated services.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/jpx/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/jpx/refs/heads/main/apis.yml)
+**Areas:** Finance · Market Data · Stocks · Exchange · Trading · Derivatives · Indices · Reference Data · Japan
 
-## Tags
+## JPX (Japan Exchange Group) on APIs.io
 
-- Financial
-- Market Data
-- Stocks
-- Exchange
-- Trading
-- Derivatives
-- Indices
-- Reference Data
-- Japan
+Everything profiled for JPX (Japan Exchange Group) is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/jpx/](https://apis.io/providers/jpx/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (8)
 
-- **Created:** 2026-07-21
-- **Modified:** 2026-07-21
+- [J-Quants Equities API](https://apis.io/apis/jpx/j-quants-equities-api/) — Listed issue master, daily and morning-session OHLCV, minute bars and tick trades (add-on), earnings calendar, and weekly trading by investor type for Tokyo…
+- [J-Quants Markets API](https://apis.io/apis/jpx/j-quants-markets-api/) — Market-structure datasets under /v2/markets/* - trading calendar, short sale position reports, short ratio by sector, weekly margin interest, daily margin…
+- [J-Quants Indices API](https://apis.io/apis/jpx/j-quants-indices-api/) — Daily OHLC for TOPIX and other JPX indices under /v2/indices/* endpoints, with plan-gated access (TOPIX from Light, full index set from Standard).
+- [J-Quants Financials API](https://apis.io/apis/jpx/j-quants-financials-api/) — Corporate financial data under /v2/fins/* - summary report figures (EPS, forecasts), detailed BS/PL/CF statements, and cash dividend data sourced from TDnet…
+- [J-Quants Derivatives API](https://apis.io/apis/jpx/j-quants-derivatives-api/) — Daily OHLC for Osaka Exchange futures and options under /v2/derivatives/*, including Nikkei 225 options (Standard plan) and the full futures/options…
+- [J-Quants EDINET Data API](https://apis.io/apis/jpx/j-quants-edinet-api/) — Structured data extracted from EDINET regulatory filings under /v2/edinet/* - major shareholders, cross-shareholdings (policy holdings), and large volume…
+- [J-Quants TDnet Disclosure API](https://apis.io/apis/jpx/j-quants-tdnet-api/) — Add-on access to TDnet timely-disclosure documents - a disclosure index (/td/list), document file retrieval (/td/files), and bulk CSV download (/td/bulk)…
+- [J-Quants Bulk Download API](https://apis.io/apis/jpx/j-quants-bulk-download-api/) — File-based delivery alongside the REST endpoints - list available bulk files (/bulk/list) and download gzipped CSV extracts (/bulk/get) for supported datasets.
 
-## APIs
+### Published properties
 
-### J-Quants Equities API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Listed issue master, daily and morning-session OHLCV, minute bars and tick trades (add-on), earnings calendar, and weekly trading by investor type for Tokyo Stock Exchange equities, under /v2/equities/* endpoints.
+#### MCP servers (1)
 
-- **Human URL:** [https://jpx-jquants.com/en/spec/eq-master](https://jpx-jquants.com/en/spec/eq-master)
-- **Base URL:** `https://api.jquants.com/v2`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [j-quants-doc-mcp](https://apis.io/servers/jpx/j-quants-doc-mcp/)
 
-- Stocks
-- OHLCV
-- Tick Data
-- Listed Issues
+#### Security (2)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Documentation](https://jpx-jquants.com/en/spec/eq-master)
-- [API Reference](https://jpx-jquants.com/en/spec/eq-bars-daily)
+- [Jpx Authentication](https://apis.io/security/jpx/jpx-authentication/)
+- [Jpx Domain Security](https://apis.io/security/jpx/jpx-domain-security/)
 
-### J-Quants Markets API
+#### Plans and pricing (1)
 
-Market-structure datasets under /v2/markets/* - trading calendar, short sale position reports, short ratio by sector, weekly margin interest, daily margin alerts, and breakdown trading data.
+Published plans, tiers and prices.
 
-- **Human URL:** [https://jpx-jquants.com/en/spec/mkt-cal](https://jpx-jquants.com/en/spec/mkt-cal)
-- **Base URL:** `https://api.jquants.com/v2`
+- [Jpx Plans](https://apis.io/plans/jpx/jpx-plans/)
 
-#### Tags
+#### Rate limits (1)
 
-- Short Selling
-- Margin Trading
-- Trading Calendar
+Published request limits.
 
-#### Properties
+- [Jpx Rate Limits](https://apis.io/rate-limits/jpx/jpx-rate-limits/)
 
-- [Documentation](https://jpx-jquants.com/en/spec/mkt-cal)
-- [API Reference](https://jpx-jquants.com/en/spec/mkt-short-sale)
+## Where to find this API
 
-### J-Quants Indices API
-
-Daily OHLC for TOPIX and other JPX indices under /v2/indices/* endpoints, with plan-gated access (TOPIX from Light, full index set from Standard).
-
-- **Human URL:** [https://jpx-jquants.com/en/spec/idx-bars-daily](https://jpx-jquants.com/en/spec/idx-bars-daily)
-- **Base URL:** `https://api.jquants.com/v2`
-
-#### Tags
-
-- Indices
-- TOPIX
-
-#### Properties
-
-- [Documentation](https://jpx-jquants.com/en/spec/idx-bars-daily)
-- [API Reference](https://jpx-jquants.com/en/spec/idx-bars-daily-topix)
-
-### J-Quants Financials API
-
-Corporate financial data under /v2/fins/* - summary report figures (EPS, forecasts), detailed BS/PL/CF statements, and cash dividend data sourced from TDnet disclosures.
-
-- **Human URL:** [https://jpx-jquants.com/en/spec/fin-summary](https://jpx-jquants.com/en/spec/fin-summary)
-- **Base URL:** `https://api.jquants.com/v2`
-
-#### Tags
-
-- Financial Statements
-- Dividends
-- Fundamentals
-
-#### Properties
-
-- [Documentation](https://jpx-jquants.com/en/spec/fin-summary)
-- [API Reference](https://jpx-jquants.com/en/spec/fin-details)
-
-### J-Quants Derivatives API
-
-Daily OHLC for Osaka Exchange futures and options under /v2/derivatives/*, including Nikkei 225 options (Standard plan) and the full futures/options universe (Premium plan).
-
-- **Human URL:** [https://jpx-jquants.com/en/spec/drv-bars-daily-fut](https://jpx-jquants.com/en/spec/drv-bars-daily-fut)
-- **Base URL:** `https://api.jquants.com/v2`
-
-#### Tags
-
-- Futures
-- Options
-- Derivatives
-
-#### Properties
-
-- [Documentation](https://jpx-jquants.com/en/spec/drv-bars-daily-fut)
-- [API Reference](https://jpx-jquants.com/en/spec/drv-bars-daily-opt)
-
-### J-Quants EDINET Data API
-
-Structured data extracted from EDINET regulatory filings under /v2/edinet/* - major shareholders, cross-shareholdings (policy holdings), and large volume holding reports.
-
-- **Human URL:** [https://jpx-jquants.com/en/spec/edinet-major-shareholders](https://jpx-jquants.com/en/spec/edinet-major-shareholders)
-- **Base URL:** `https://api.jquants.com/v2`
-
-#### Tags
-
-- EDINET
-- Shareholders
-- Filings
-
-#### Properties
-
-- [Documentation](https://jpx-jquants.com/en/spec/edinet-major-shareholders)
-- [API Reference](https://jpx-jquants.com/en/spec/edinet-cross-shareholdings)
-
-### J-Quants TDnet Disclosure API
-
-Add-on access to TDnet timely-disclosure documents - a disclosure index (/td/list), document file retrieval (/td/files), and bulk CSV download (/td/bulk) covering five years of filings.
-
-- **Human URL:** [https://jpx-jquants.com/en/spec/td-list](https://jpx-jquants.com/en/spec/td-list)
-- **Base URL:** `https://api.jquants.com/v2`
-
-#### Tags
-
-- TDnet
-- Disclosures
-- Documents
-
-#### Properties
-
-- [Documentation](https://jpx-jquants.com/en/spec/td-list)
-- [API Reference](https://jpx-jquants.com/en/spec/td-files)
-
-### J-Quants Bulk Download API
-
-File-based delivery alongside the REST endpoints - list available bulk files (/bulk/list) and download gzipped CSV extracts (/bulk/get) for supported datasets.
-
-- **Human URL:** [https://jpx-jquants.com/en/spec/bulk](https://jpx-jquants.com/en/spec/bulk)
-- **Base URL:** `https://api.jquants.com/v2`
-
-#### Tags
-
-- Bulk
-- CSV
-- Files
-
-#### Properties
-
-- [Documentation](https://jpx-jquants.com/en/spec/bulk)
-- [API Reference](https://jpx-jquants.com/en/spec/bulk-list)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.jpx.co.jp/english/)
-- [Portal](https://jpx-jquants.com/en)
 - [Documentation](https://jpx-jquants.com/en/spec)
-- [GitHub Organization](https://github.com/J-Quants)
-- [LinkedIn](https://www.linkedin.com/company/japan-exchange-group)
-- [Blog](https://qiita.com/j_quants)
+- [Getting started](https://jpx-jquants.com/en/spec/quickstart)
+- [API reference](https://jpx-jquants.com/en/spec)
 - [Pricing](https://jpx-jquants.com/en#pricing)
-- [Sign Up](https://jpx-jquants.com/en/register)
-- [Terms of Service](https://www.jpx.co.jp/english/term-of-use/index.html)
-- [Privacy Policy](https://www.jpx.co.jp/english/corporate/governance/security/personal-information/index.html)
+- [Sign up](https://jpx-jquants.com/en/register)
 - [Support](https://jpx-jquants.com/en/help)
+- [Blog](https://qiita.com/j_quants)
+- [Terms of service](https://www.jpx.co.jp/english/term-of-use/index.html)
+- [Privacy policy](https://www.jpx.co.jp/english/corporate/governance/security/personal-information/index.html)
+- [GitHub](https://github.com/J-Quants)
+- [Status](https://jpx-jquants.com/en/help/incident)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 51.6** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 76.7 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 73.7 |
+| Developer ergonomics | 78.6 |
+| Access clarity | 76.3 |
+
+**Agent readiness 15.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | yes |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 28.7** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/jpx/](https://apis.io/providers/jpx/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for JPX (Japan Exchange Group): the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/jpx/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
